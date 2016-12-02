@@ -5,7 +5,7 @@ Tasks:
 - [x] Config & Create Database
 - [x] Create Notes Table
 - [x] Create Notes Model
-- [ ] Create Notes Controller
+- [x] Create Notes Controller
 - [ ] Create Notes Views
 
 1. Config & Create Database: application/config/database.php
@@ -33,3 +33,6 @@ Tasks:
 		PRIMARY KEY (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8
 	```
+
+3. Create Notes Controller
+	CRUD functions
