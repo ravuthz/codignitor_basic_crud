@@ -4,7 +4,7 @@ Tasks:
 
 - [x] Config & Create Database
 - [x] Create Notes Table
-- [ ] Create Notes Model
+- [x] Create Notes Model
 - [ ] Create Notes Controller
 - [ ] Create Notes Views
 
