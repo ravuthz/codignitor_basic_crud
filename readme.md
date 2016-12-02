@@ -3,7 +3,7 @@
 Tasks:
 
 - [x] Config & Create Database
-- [ ] Create Notes Table
+- [x] Create Notes Table
 - [ ] Create Notes Model
 - [ ] Create Notes Controller
 - [ ] Create Notes Views
@@ -18,4 +18,18 @@ Tasks:
 
 	```sql
 	CREATE DATABASE `codignitor_basic_crud` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+	```
+
+2. Create Notes Tables
+
+	```sql
+	CREATE TABLE `notes` (
+		`id` int(11) NOT NULL AUTO_INCREMENT,
+		`name` varchar(50) NOT NULL,
+		`slug` varchar(50) NOT NULL,
+		`note` text NOT NULL,
+		`created_at` datetime NOT NULL,
+		`updated_at` datetime NOT NULL,
+		PRIMARY KEY (`id`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8
 	```
