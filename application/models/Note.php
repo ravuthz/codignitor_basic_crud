@@ -1,7 +1,7 @@
 <?php
 
 class Note extends CI_Model {
-
+	
 	private $table = 'notes';
 
 	public function __construct() {
@@ -30,8 +30,7 @@ class Note extends CI_Model {
     		'name' => $_POST['name'],
     		'note' => $_POST['note']
     	];
-
-        return $this->db->insert();
+        return $this->db->insert($this->table, $data);
     }
 
     public function update() {
@@ -45,7 +44,6 @@ class Note extends CI_Model {
     		'name' => $_POST['name'],
     		'note' => $_POST['note']
     	];
-
         return $this->db->update($this->table, $data, ['id' => $_POST['id']]);
     }
 
