@@ -1,7 +1,12 @@
 <?php
 
 class Note extends CI_Model {
-	
+	public $id;
+    public $note;
+    public $name;
+    public $created_at;
+    public $updated_at;
+
 	private $table = 'notes';
 
 	public function __construct() {
@@ -22,7 +27,7 @@ class Note extends CI_Model {
     public function create() {
     	$this->load->helper('url');
         $today = date('Y-m-d H:i:s');
-        $slug = url_title($_POST['slug'], 'dash', TRUE);
+        $slug = url_title($_POST['name'], 'dash', TRUE);
 
     	$data = [
     		'slug' => $slug,
@@ -36,7 +41,7 @@ class Note extends CI_Model {
     public function update() {
     	$this->load->helper('url');
         $today = date('Y-m-d H:i:s');
-        $slug = url_title($_POST['slug'], 'dash', TRUE);
+        $slug = url_title($_POST['name'], 'dash', TRUE);
 
     	$data = [
     		'slug' => $slug,
