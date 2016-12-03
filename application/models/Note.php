@@ -24,6 +24,14 @@ class Note extends CI_Model {
 		return $this->db->get_where($this->table, $params)->result();
     }
 
+	public function count() {
+		return $this->db->count_all($this->table);
+	}
+
+	public function paginate($limit, $start) {
+		return $this->db->limit($limit, $start)->get($this->table)->result();
+	}
+
     public function create() {
     	$this->load->helper('url');
         $today = date('Y-m-d H:i:s');

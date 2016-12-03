@@ -5,14 +5,43 @@ class Notes extends MY_Controller {
         parent::__construct();
         $this->load->database();
         $this->load->model('note');
+        $this->load->library("pagination");
     }
 
-    public function index($id = 0) {
+    public function index() {
         $data['title'] = 'All Notes';
-        $data['notes'] = $this->note->find_all();
-        if ($id) {
-            $data['note'] = $this->note->find_one(['id' => $id]);
-        }
+
+        $perPage = 1;
+        $this->pagination->initialize([
+            'per_page'        => $perPage,
+            'uri_segment'     => 3,
+            'base_url'        => base_url('notes/index'),
+            'total_rows'      => $this->note->count(),
+            'first_tag_open'  => '<li>',
+            'first_tag_close' => '</li>',
+            'last_tag_open'   => '<li>',
+            'last_tag_close'  => '</li>',
+            'next_tag_open'   => '<li>',
+            'next_tag_close'  => '</li>',
+            'prev_tag_open'   => '<li>',
+            'prev_tag_close'  => '</li>',
+            'cur_tag_open'    => '<li class="active"><a href="#">',
+            'cur_tag_close'   => '</a></li>',
+            'num_tag_open'    => '<li>',
+            'num_tag_close'   => '</li>',
+
+            'first_link'     => 'First',
+            'last_link'      => 'last',
+            'prev_link'      => '&laquo',
+            'next_link'      => '&raquo',
+            'full_tag_open'  => '<ul class="pagination">',
+            'full_tag_close' => '</ul>'
+        ]);
+
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $data["notes"] = $this->note->paginate($perPage, $page);
+        $data["links"] = $this->pagination->create_links();
+
         return $this->render('notes/index', $data);
     }
 
