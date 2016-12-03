@@ -9,3 +9,14 @@
     <script src="<?php echo base_url('public/js/bootstrap.min.js'); ?>" charset="utf-8"></script>
 </head>
 <body style="padding-top: 70px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <?php if ($this->session->flashdata('message')): ?>
+                    <div class="alert alert-success">
+                        <?php echo $this->session->flashdata('message'); ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>

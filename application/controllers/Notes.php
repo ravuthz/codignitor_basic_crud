@@ -24,6 +24,8 @@ class Notes extends MY_Controller {
 
         if ($this->form_validation->run() !== FALSE) {
             $this->note->create();
+            $this->session->set_flashdata('message', 'Note created successfully');
+            return redirect(base_url('notes'));
         }
 
         return $this->render("notes/new", $data);
@@ -41,6 +43,8 @@ class Notes extends MY_Controller {
 
         if ($this->form_validation->run() !== FALSE) {
             $this->note->update($id);
+            $this->session->set_flashdata('message', 'Note updated successfully');
+            return redirect(base_url('notes'));
         }
 
         return $this->render("notes/edit", $data);
@@ -60,6 +64,7 @@ class Notes extends MY_Controller {
         }
 
         $this->note->delete($id);
+        $this->session->set_flashdata('message', 'Note deleted successfully');
         return redirect(base_url('notes'));
     }
 
