@@ -7,9 +7,12 @@ class Notes extends MY_Controller {
         $this->load->model('note');
     }
 
-    public function index() {
+    public function index($id = 0) {
         $data['title'] = 'All Notes';
         $data['notes'] = $this->note->find_all();
+        if ($id) {
+            $data['note'] = $this->note->find_one(['id' => $id]);
+        }
         return $this->render('notes/index', $data);
     }
 
@@ -43,12 +46,21 @@ class Notes extends MY_Controller {
         return $this->render("notes/edit", $data);
     }
 
+    public function view($id = 0) {
+        if (empty($id)) {
+            show_404();
+        }
+        $data['note'] = $this->note->find_one(['id' => $id]);
+        return $this->render("notes/view", $data);
+    }
+
     public function delete($id = 0) {
         if (empty($id)) {
             show_404();
         }
 
         $this->note->delete($id);
+        return redirect(base_url('notes'));
     }
 
     private function validation() {

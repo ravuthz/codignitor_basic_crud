@@ -6,7 +6,7 @@ Tasks:
 - [x] Create Notes Table
 - [x] Create Notes Model
 - [x] Create Notes Controller
-- [ ] Create Notes Views
+- [x] Create Notes Views
 
 1. Config & Create Database: application/config/database.php
 
@@ -36,3 +36,5 @@ Tasks:
 
 3. Create Notes Controller
 	CRUD functions
+
+4. Create Notes Views

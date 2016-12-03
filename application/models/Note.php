@@ -38,7 +38,7 @@ class Note extends CI_Model {
         return $this->db->insert($this->table, $data);
     }
 
-    public function update() {
+    public function update($id) {
     	$this->load->helper('url');
         $today = date('Y-m-d H:i:s');
         $slug = url_title($_POST['name'], 'dash', TRUE);
@@ -49,10 +49,10 @@ class Note extends CI_Model {
     		'name' => $_POST['name'],
     		'note' => $_POST['note']
     	];
-        return $this->db->update($this->table, $data, ['id' => $_POST['id']]);
+        return $this->db->update($this->table, $data, ['id' => $id]);
     }
 
-    public function delete() {
-        return $this->db->delete($this->table, ['id' => $_POST['id']]);
+    public function delete($id) {
+        return $this->db->delete($this->table, ['id' => $id]);
     }
 }
